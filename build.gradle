@@ -1,0 +1,38 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group 'com.rejigl.app'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.data:spring-data-rest-hal-explorer'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'com.h2database:h2'
+    implementation ('org.springframework.security:spring-security-config'){
+        exclude group: 'aopalliance', module: 'aopalliance'
+    }
+    implementation ('org.springframework.security:spring-security-web'){
+        exclude group: 'aopalliance', module: 'aopalliance'
+    }
+
+    implementation 'com.h2database:h2'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
